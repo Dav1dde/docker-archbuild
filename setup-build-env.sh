@@ -10,16 +10,14 @@ mkdir -p /home/build
 cat <<EOF > /usr/bin/build_package
 #!/bin/bash -ex
 
-uid=\${USER_ID:-nobody}
-gid=\${GROUP_ID:-\${USER_ID}}
-groupadd -f \${gid}
-useradd -M -g \${gid} \${uid}
+groupadd -f -g \${GROUP_ID} \${GROUP_NAME}
+useradd -M -g \${GROUP_NAME} -u \${USER_ID} \${USER_NAME}
 
 pacman -Syyu --noconfirm --noprogressbar
 
 cd /home/build
-chown -R \${uid}:\${gid} /home/build
-sudo -u \${uid} makepkg --nosign --syncdeps --noconfirm --force
+chown -R \${USER_NAME}:\${GROUP_NAME} /home/build
+sudo -u \${USER_NAME} makepkg --nosign --syncdeps --noconfirm --force
 
 userdel -f \${uid}
 EOF
