@@ -19,7 +19,7 @@ cd /home/build
 chown -R \${USER_NAME}:\${GROUP_NAME} /home/build
 sudo -u \${USER_NAME} makepkg --nosign --syncdeps --noconfirm --force
 
-userdel -f \${uid}
+userdel -f \${USER_NAME}
 EOF
 chmod 755 /usr/bin/build_package
 
