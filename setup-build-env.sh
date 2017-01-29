@@ -10,8 +10,8 @@ mkdir -p /home/build
 cat <<EOF > /usr/bin/build_package
 #!/bin/bash -ex
 
-uid=\${USER:-nobody}
-gid=\${GROUP:-\${USER_ID}}
+uid=\${USER_ID:-nobody}
+gid=\${GROUP_ID:-\${USER_ID}}
 groupadd -f \${gid}
 useradd -M -g \${gid} \${uid}
 
