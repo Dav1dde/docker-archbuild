@@ -1,0 +1,10 @@
+#!/bin/bash -ex
+
+groupadd -f -g $GROUP_ID $GROUP_NAME
+useradd -M -g $GROUP_NAME -u $USER_ID $USER_NAME -s "/bin/bash"
+
+pacman -Syyu --noconfirm --noprogressbar
+
+cd /home/build
+chown -R $USER_NAME:$GROUP_NAME /home/build
+sudo -u $USER_NAME makepkg --noprogressbar --nosign --syncdeps --noconfirm --force
