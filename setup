@@ -5,8 +5,3 @@ pacman -Scc --noconfirm
 mkdir -p /home/build 
 chmod 755 /usr/bin/build_package 
 echo "ALL ALL=(ALL) NOPASSWD: /usr/bin/pacman" >> /etc/sudoers
-if [ ${#REPO_NAME} -g 0 ]; then
-    echo "[$REPO_NAME]" >> /etc/pacman.conf 
-    echo "Server = $REPO" >> /etc/pacman.conf
-    echo "SigLevel = $REPO_SIG" >> /etc/pacman.conf
-fi
