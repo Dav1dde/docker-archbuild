@@ -1,6 +1,6 @@
 #!/bin/bash -ex
 
-pacman -Syyu --force --noconfirm --needed --noprogressbar base-devel
+pacman -Syyu --noconfirm --needed --noprogressbar base-devel
 pacman -Scc --noconfirm 
 mkdir -p /home/build 
 chmod 755 /usr/bin/build_package 
