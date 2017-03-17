@@ -3,7 +3,7 @@
 groupadd -f -g $GROUP_ID $GROUP_NAME
 useradd -M -g $GROUP_NAME -u $USER_ID $USER_NAME -s "/bin/bash"
 
-if [ ${#REPO_NAME} -g 0 ]; then
+if [[ -z "$REPO_NAME" ]]; then
     echo "[$REPO_NAME]" >> /etc/pacman.conf 
     echo "Server = $REPO" >> /etc/pacman.conf
     echo "SigLevel = $REPO_SIG" >> /etc/pacman.conf
