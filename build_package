@@ -1,7 +1,7 @@
 #!/bin/bash -ex
 
 groupadd -f -g $GROUP_ID $GROUP_NAME
-useradd -M -g $GROUP_NAME -u $USER_ID $USER_NAME -s "/bin/bash"
+useradd -m -d /home/build -g $GROUP_NAME -u $USER_ID $USER_NAME -s "/bin/bash"
 
 if [[ -n "$REPO_NAME" ]]; then
     echo "[$REPO_NAME]" >> /etc/pacman.conf 
