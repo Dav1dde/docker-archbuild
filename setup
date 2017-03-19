@@ -1,7 +1,15 @@
 #!/bin/bash -ex
 
-pacman -Syyu --noconfirm --needed --noprogressbar base-devel
+pacman -Syyu --noconfirm --needed --noprogressbar base-devel bash
 pacman -Scc --noconfirm 
+
 mkdir -p /home/build 
 chmod 755 /usr/bin/build_package 
+
+# Allow build user to install dependencies
 echo "ALL ALL=(ALL) NOPASSWD: /usr/bin/pacman" >> /etc/sudoers
+
+# Change shell to bash, some packages don't build with zsh
+rm /usr/bin/sh
+ln -s /usr/bin/bash /usr/bin/sh
+
