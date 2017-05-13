@@ -12,5 +12,10 @@ fi
 pacman -Syyu --noconfirm --noprogressbar
 
 cd /home/build
+
+mkdir .gnupg
+echo "keyserver-options auto-key-retrieve" > .gnupg/gpg.conf
+echo "auto-key-locate hkp://pool.sks-keyservers.net" >> .gnupg/gpg.conf
+
 chown -R $USER_NAME:$GROUP_NAME /home/build
 sudo -u $USER_NAME makepkg --noprogressbar --nosign --syncdeps --noconfirm --force
