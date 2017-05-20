@@ -13,3 +13,8 @@ echo "ALL ALL=(ALL) NOPASSWD: /usr/bin/pacman" >> /etc/sudoers
 rm /usr/bin/sh
 ln -s /usr/bin/bash /usr/bin/sh
 
+# Enable multilib
+echo "[multilib]" >> /etc/pacman.conf
+echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
+
+
