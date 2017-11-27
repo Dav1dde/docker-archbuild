@@ -2,9 +2,14 @@
 FROM greyltc/archlinux 
 
 # copy install and build script
-ADD setup /
 ADD build_package /usr/bin/build_package
 
+ADD setup /
+RUN chmod +x /setup
+
+# installs sudo and (runtime) dependencies for makepkg and do some configuration
+RUN /setup && rm /setup
+    
 # set default environment variables for the entrypoint
 ENV USER_NAME="pkgbuilder" \
     USER_ID="1000" \
@@ -13,10 +18,5 @@ ENV USER_NAME="pkgbuilder" \
     REPO_NAME="" \
     REPO="" \
     REPO_SIG=""
-    
-# installs sudo and (runtime) dependencies for makepkg and do some configuration
-RUN chmod +x /setup && \
-    /setup && \
-    rm /setup
     
 ENTRYPOINT /usr/bin/build_package
