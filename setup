@@ -1,6 +1,8 @@
 #!/bin/bash -ex
 
-pacman -Syyu --noconfirm --needed --noprogressbar base-devel bash
+/sbin/get-new-mirrors
+
+pacman -Syyu --noconfirm --needed --noprogressbar base-devel bash sudo
 pacman -Scc --noconfirm 
 
 mkdir -p /home/build 
